@@ -1,0 +1,142 @@
+
+
+.pokemon-card {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   box-shadow: 0 20px 30px rgb(0 0 0 / 38%);
+   background-color: #e1dad629;
+   border-radius: 10px;
+   border: none !important;
+
+   &__image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 160px;
+   }
+}
+
+.pokemon-info {
+    border-radius: 0 0 10px 10px;
+    background-color: #000000cc;      
+
+    &__name, &__number {
+        padding: 0 10px;
+    }
+
+    &__number {
+        color: #919191;
+        font-size: 80%;
+        padding-top: 2px;
+    }
+
+    &__name {
+        color: white;
+        font-size: 145%;
+        font-weight: 500;
+        margin:  0.15em 0 5px;
+        text-transform: capitalize; 
+        text-align: center;
+    }
+
+    &__types {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__type {
+        margin: 0 10px;
+        border-radius: 3px;
+        line-height: 18px;
+        max-width: 110px;
+        width: 38.4375%;
+        height: 18px;
+        letter-spacing: 0.4px;
+        font-size: 12px;
+        text-align: center;
+        text-transform: capitalize;
+        
+        &--grass {
+           background: #3E9709;
+        }
+
+        &--normal {
+            background: #AAA67F;
+         }
+
+         &--fighting {
+            background: #C12239;
+         }
+
+         &--flying {
+            background: #A891EC;
+         }
+
+         &--ground {
+            background: #DEC16B;
+         }
+
+         &--poison {
+            background: #A43E9E;
+         }
+
+         &--rock {
+            background: #776A3E;
+         }
+
+         &--bug {
+            background: #A7B723;
+         }
+
+         &--ghost {
+            background: #70559B;
+         }
+
+         &--steel {
+            background: #B7B9D0;
+         }
+
+         &--fire {
+            background: #f56c17;
+         }
+
+         &--water {
+            background: #6493EB;
+         }
+
+         &--electric {
+            background: #F9CF30;
+         }
+
+         &--psychic {
+            background: #FB5584;
+         }
+
+         &--ice {
+            background: #9AD6DF;
+         }
+
+         &--dragon {
+            background: #7037FF;
+         }
+
+         &--dark {
+            background: #75574C;
+         }
+
+         &--fairy {
+            background: #E69EAC;
+         }
+
+         &--unoknown {
+            background: #526677;
+         }
+
+         &--shadow {
+            background: #4F507B;
+         }
+    }
+}
+
+

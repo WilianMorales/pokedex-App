@@ -1,0 +1,25 @@
+<div class="row mt-4">
+    <div class="col-12 col-sm-4 col-md-3 mb-3" *ngFor="let pokemon of pokemones">
+      <div class="pokemon-card">
+        <div class="pokemon-card__image">
+          <img src="https://projectpokemon.org/images/normal-sprite/{{pokemon.name}}.gif" alt="pokemon Image">
+        </div>
+  
+        <div class="pokemon-info">
+          <div class="pokemon-info__number">
+            N° {{leadingZero(pokemon.order) }}
+          </div>
+  
+          <div class="pokemon-info__name">
+            {{pokemon.name}}
+          </div>
+  
+          <div class="pokemon-info__types mb-3">
+            <div class="pokemon-info__type" *ngFor="let type of pokemon.types" [class]="'pokemon-info__type--' + type">{{ type }}</div>
+          </div> 
+        </div>
+      </div>
+    </div>
+
+</div>
+
