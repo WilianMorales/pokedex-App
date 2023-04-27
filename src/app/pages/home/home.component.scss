@@ -1,0 +1,36 @@
+.search-container {
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        font-size: 18px;
+    }
+
+}
+
+.favorite {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    &-link {
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline 1.5px;
+            text-decoration-color: #fd5d5c;
+        }
+    }
+}
+
+@media (min-width: 580px) {
+
+    .search-container {
+        input {
+            width: 50%;
+        }
+    }
+}

@@ -1,5 +1,39 @@
 <app-header></app-header>
 
-<div class="container">
+<div class="container mt-3">
+    <div class="search-container d-flex form-inline my-2 ">
+        <input 
+            class="form-control"
+            type="search" 
+            placeholder="Buscar pokemon"
+            aria-label="Search">
+        <span class="mr-sm-3 ml-sm-3">or</span>
+        <select class="form-control">
+            <option>All</option>
+            <option>Fire</option>
+            <option>Ghost</option>
+            <option>Electric</option>
+            <option>physicolop</option>
+            <option>Normal</option>
+        </select>
+    </div>
+
+    <section class="row mt-3 mb-3">
+        <div class="col-6 ml-md-5 ml-3">
+            <app-slide-toggle></app-slide-toggle>
+        </div>
+        <div class="col-5">
+            <div class="favorite">
+                <figure class="card__favorite mr-1">
+                    <img width="30" height="30" src="assets/icon/heart-solid.svg" alt="heart">
+                </figure>
+                <p class="favorite-link">Favorites</p>
+                <p class="ml-2 badge badge-danger">+10</p>
+            </div>
+        </div>
+    </section>
+
+    <app-poke-card *ngFor="let pokemon of pokemons" [pokemones]="pokemons"></app-poke-card>
+    
 
 </div>
