@@ -6,12 +6,13 @@
     padding: 0;
     outline: none;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
 }
 
-.contenedor {
+body {
     max-width: 100vw;
     min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: white;
     background : {
         image: url(./assets/images/background.jpg);
         repeat: no-repeat;
@@ -19,4 +20,8 @@
         position: center;
         size: cover;
     };
+}
+
+figure, p {
+    margin: 0;
 }
