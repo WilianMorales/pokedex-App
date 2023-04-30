@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '@services/pokemon.service';
 import { IPokemon } from '@interfaces/pokemon-page.interface';
-import { Observable } from 'rxjs';
-import { IPokemonDetail } from '@interfaces/pokemon.interface';
 
 @Component({
   selector: 'app-home',
@@ -11,30 +9,52 @@ import { IPokemonDetail } from '@interfaces/pokemon.interface';
 })
 export class HomeComponent implements OnInit {
 
-  pokemons: any[] = [];
+  pokemons: IPokemon[] = [];
+  advance = 0;
+  goBack = 0;
+  btnActive: boolean = true;
+
+  classicMode: boolean = true;
+
 
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
-
-    this.pokemonService.getPokemons().subscribe(res => {
-      this.pokemons = res;
-    }); 
-
+    localStorage.removeItem('valor');
+    this.loadPage();
   }
 
+  loadPage(): void {
+    this.pokemonService.getPokemonPage().subscribe((pokeList) => {
+      this.pokemons = pokeList
 
-  getPokemon(list: IPokemon[]) {
-    const arr: Observable<IPokemonDetail>[] = [];
-    list.map((value: IPokemon) => {
-      arr.push(
-        this.pokemonService.getPokemonDetail(value.name)
-      );
+      console.log(pokeList);
+
     });
   }
 
-  getType(pokemon: any): string {
-    return this.pokemonService.getType(pokemon);
+  onPrevious(): void {
+    this.goBack = 20;
+    this.pokemonService.getPaginationPrevious(this.goBack)
+      .subscribe(res => {
+        this.pokemons = res;
+
+        if (localStorage.getItem('valor') === 'stop') {
+          this.btnActive = true;
+        }
+      })
+  }
+
+  onNext(): void {
+    this.advance = 20;
+
+    this.pokemonService.getPaginationNext(this.advance)
+      .subscribe(res => {
+        this.pokemons = res
+      });
+
+    localStorage.removeItem('valor');
+    this.btnActive = false;
   }
 
 }

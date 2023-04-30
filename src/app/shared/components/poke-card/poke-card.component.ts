@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IPokemonDetail } from '@interfaces/pokemon.interface';
+import { IPokemon } from '@interfaces/pokemon-page.interface';
 
 @Component({
   selector: 'app-poke-card',
@@ -8,16 +8,18 @@ import { IPokemonDetail } from '@interfaces/pokemon.interface';
 })
 export class PokeCardComponent {
 
-  @Input() pokemones?: IPokemonDetail[];
+  @Input() pokemons?: IPokemon[];
 
   constructor() { }
 
-  leadingZero(str: string | number, size = 3): string {
+  // TODO: Metodo para concatenar 00 delante del id del pokemon.
+  leadingZero(str: string | number, size = 2): string {
     let s = String(str);
 
-    while (s.length < (size || 2)) {
+    while (s.length < (size || 1)) {
       s = '0' + s;
     }
     return s;
   }
+
 }

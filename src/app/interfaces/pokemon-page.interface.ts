@@ -6,6 +6,7 @@ export interface IPokemonResponse {
 }
 
 export interface IPokemon {
-    name: string;
-    url:  string;
+    name:  string;
+    url:   string;
+    order: number;
 }

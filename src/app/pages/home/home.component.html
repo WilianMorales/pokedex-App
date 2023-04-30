@@ -2,11 +2,7 @@
 
 <div class="container mt-3">
     <div class="search-container d-flex form-inline my-2 ">
-        <input 
-            class="form-control"
-            type="search" 
-            placeholder="Buscar pokemon"
-            aria-label="Search">
+        <input class="form-control" type="search" placeholder="Buscar pokemon" aria-label="Search">
         <span class="mr-sm-3 ml-sm-3">or</span>
         <select class="form-control">
             <option>All</option>
@@ -33,7 +29,24 @@
         </div>
     </section>
 
-    <app-poke-card *ngFor="let pokemon of pokemons" [pokemones]="pokemons"></app-poke-card>
-    
+    <app-poke-card [pokemons]="pokemons"></app-poke-card>
 
+    <nav class="pagination" aria-label="Page navigation">
+        <button class="btn btn-pagination" (click)="onPrevious()" [disabled]="btnActive">
+            <svg viewBox="-100.9 99.1 61.9 105.9" style="width: 7px;margin-right: 4px;fill: white;">
+                <path
+                    d="m-98.2 158.8 43.5 43.5c1.7 1.7 4 2.7 6.5 2.7s4.8-1 6.5-2.7c1.7-1.7 2.7-4 2.7-6.5s-1-4.8-2.7-6.5l-37.2-37.2 37.2-37.2c1.7-1.7 2.7-4 2.7-6.5s-1-4.8-2.6-6.5c-1.8-1.9-4.2-2.8-6.6-2.8-2.3 0-4.6.9-6.5 2.6-11.5 11.4-41.2 41-43.3 43l-.2.2c-3.6 3.6-3.6 10.3 0 13.9z">
+                </path>
+            </svg>
+            Prev
+        </button>
+        <button class="btn btn-pagination" (click)="onNext()"> 
+            Next
+            <svg viewBox="-100.9 99.1 61.9 105.9" style="width: 7px;margin-left: 4px;fill: white;">
+                <path
+                    d="m-41.7 145.3-43.5-43.5c-1.7-1.7-4-2.7-6.5-2.7s-4.8 1-6.5 2.7c-1.7 1.7-2.7 4-2.7 6.5s1 4.8 2.7 6.5L-61 152l-37.2 37.2c-1.7 1.7-2.7 4-2.7 6.5s1 4.8 2.6 6.5c1.8 1.9 4.2 2.8 6.6 2.8 2.3 0 4.6-.9 6.5-2.6 11.5-11.4 41.2-41 43.3-43l.2-.2c3.6-3.6 3.6-10.4 0-13.9z">
+                </path>
+            </svg>
+        </button>
+    </nav>
 </div>

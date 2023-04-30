@@ -1,8 +1,7 @@
-
-
 .pokemon-card {
    width: 100%;
    display: flex;
+   cursor: pointer;
    flex-direction: column;
    box-shadow: 0 20px 30px rgb(0 0 0 / 38%);
    background-color: #e1dad629;
@@ -139,4 +138,10 @@
     }
 }
 
-
+@media (min-width: 576px) and ( max-width: 991.98px){
+   .pokemon-info{
+      &__name{
+         font-size: 100%;
+      }
+   }
+}

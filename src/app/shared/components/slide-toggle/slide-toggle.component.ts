@@ -3,13 +3,17 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-slide-toggle',
   template: `
-    <div class="mt-1 custom-control custom-switch">
-      <input type="checkbox"
+    <div class="slide-toggle mt-1 custom-control custom-switch">
+        <input type="checkbox"
         class="custom-control-input"
         id="customSwitches"
         [checked]="classicMode"
         (change)="classicMode = !classicMode">
-      <label class="custom-control-label" for="customSwitches">{{classicMode ? 'Classic' : 'Gif'}}</label>
+      <label class="custom-control-label"
+        style="cursor: pointer;"
+        for="customSwitches">
+        {{classicMode ? 'Classic' : 'Gif'}}
+      </label>
     </div>
   `,
   styleUrls: ['./slide-toggle.component.scss']

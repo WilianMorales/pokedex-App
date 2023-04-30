@@ -1,20 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IPokemon, IPokemonResponse } from '@interfaces/pokemon-page.interface';
-import { IPokemonDetail } from '@interfaces/pokemon.interface';
+import { IPokemonDetails } from '@interfaces/pokemon.interface';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonService {
 
-  //https://pokeapi.co/api/v2/pokemon?limit=20&offset=0
   private BASE_URL = 'https://pokeapi.co/api/v2'
-  private _pokemons: any[] = [];
-  private _next: string = '';
-  private limitPage = 50;
+  private limitPage = 20;
   offsetPage = 0;
 
   constructor(private http: HttpClient) { }
@@ -26,21 +23,53 @@ export class PokemonService {
     }
   }
 
-  getPokemons(): Observable<IPokemon[]> {
-    return this.http.get<IPokemonResponse>(`${this.BASE_URL}/pokemon`, {
+  // TODO: Metodo para paginar la lista
+  getPokemonPage(): Observable<IPokemon[]> {
+    return this.http.get<IPokemonResponse[]>(`${this.BASE_URL}/pokemon`, {
       params: this.params
     }).pipe(
-      map(value => value.results)
-    )
+      map((res: any) => res.results.map((value: any) => ({
+        name: value.name,
+        order: value.url.split('/').filter(Boolean).pop()
+      }))
+      )
+    );
   }
 
-  getPokemonDetail(pokemon: number | string): Observable<IPokemonDetail> {
-    return this.http.get<IPokemonDetail>(this.BASE_URL + '/pokemon/' + pokemon);
+  getPaginationPrevious(goback: number) {
+    this.offsetPage = this.offsetPage - goback;
+
+    if (this.offsetPage === 0) {
+      localStorage.setItem('valor', 'stop');
+    }
+
+    const params = { ...this.params, offset: this.offsetPage };
+    return this.http.get<any>(`${this.BASE_URL}/pokemon`, {
+      params
+    }).pipe(
+      map(response => response.results.map((value: any) => ({
+        name: value.name,
+        order: value.url.split('/').filter(Boolean).pop()
+      }))
+      )
+    );
   }
 
-  getType(pokemon: any): string {
-    return pokemon && pokemon.types.length > 0 ? pokemon.types[0].type.name : '';
+  getPaginationNext(advance: number) {
+    this.offsetPage = this.offsetPage + advance;
+
+    const params = { ...this.params, offset: this.offsetPage };
+    return this.http.get<any>(`${this.BASE_URL}/pokemon`, {
+      params
+    }).pipe(
+      map(response => response.results.map((value: any) => ({
+        name: value.name,
+        order: value.url.split('/').filter(Boolean).pop()
+      }))
+      )
+    );
   }
 
+  
 
 }
