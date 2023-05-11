@@ -1,3 +1,5 @@
+import { IPokemonDetails } from "./pokemon.interface";
+
 export interface IPokemonResponse {
     count:    number;
     next:     string;
@@ -9,4 +11,5 @@ export interface IPokemon {
     name:  string;
     url:   string;
     order: number;
+    status: IPokemonDetails;
 }

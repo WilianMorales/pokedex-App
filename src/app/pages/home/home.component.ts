@@ -9,13 +9,12 @@ import { IPokemon } from '@interfaces/pokemon-page.interface';
 })
 export class HomeComponent implements OnInit {
 
-  pokemons: IPokemon[] = [];
+  pokemons!: IPokemon[];
   advance = 0;
   goBack = 0;
   btnActive: boolean = true;
 
   classicMode: boolean = true;
-
 
   constructor(private pokemonService: PokemonService) { }
 
@@ -26,10 +25,7 @@ export class HomeComponent implements OnInit {
 
   loadPage(): void {
     this.pokemonService.getPokemonPage().subscribe((pokeList) => {
-      this.pokemons = pokeList
-
-      console.log(pokeList);
-
+      this.pokemons = pokeList.results;
     });
   }
 
@@ -37,7 +33,7 @@ export class HomeComponent implements OnInit {
     this.goBack = 20;
     this.pokemonService.getPaginationPrevious(this.goBack)
       .subscribe(res => {
-        this.pokemons = res;
+        this.pokemons = res.results;
 
         if (localStorage.getItem('valor') === 'stop') {
           this.btnActive = true;
@@ -50,7 +46,7 @@ export class HomeComponent implements OnInit {
 
     this.pokemonService.getPaginationNext(this.advance)
       .subscribe(res => {
-        this.pokemons = res
+        this.pokemons = res.results
       });
 
     localStorage.removeItem('valor');

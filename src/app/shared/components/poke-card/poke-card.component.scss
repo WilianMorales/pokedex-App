@@ -1,7 +1,6 @@
 .pokemon-card {
    width: 100%;
    display: flex;
-   cursor: pointer;
    flex-direction: column;
    box-shadow: 0 20px 30px rgb(0 0 0 / 38%);
    background-color: #e1dad629;
@@ -13,6 +12,7 @@
       justify-content: center;
       align-items: center;
       height: 160px;
+      cursor: pointer;
    }
 }
 
@@ -30,6 +30,12 @@
         padding-top: 2px;
     }
 
+    &__favorite {
+      width: 30px;
+      cursor: pointer;
+      float:right;
+    }
+
     &__name {
         color: white;
         font-size: 145%;
@@ -37,6 +43,7 @@
         margin:  0.15em 0 5px;
         text-transform: capitalize; 
         text-align: center;
+        cursor: pointer;
     }
 
     &__types {
@@ -45,23 +52,24 @@
     }
 
     &__type {
-        margin: 0 10px;
-        border-radius: 3px;
-        line-height: 18px;
-        max-width: 110px;
         width: 38.4375%;
-        height: 18px;
+        height: 30px;
+        max-width: 150px;
+        margin: 0 10px;
+        padding: 5px;
+        border-radius: 24px;
+        line-height: 18px;
         letter-spacing: 0.4px;
         font-size: 12px;
         text-align: center;
         text-transform: capitalize;
         
         &--grass {
-           background: #3E9709;
+           background: #5FBD58;
         }
 
         &--normal {
-            background: #AAA67F;
+            background: #A0A29F;
          }
 
          &--fighting {
@@ -69,11 +77,11 @@
          }
 
          &--flying {
-            background: #A891EC;
+            background: #A1BBEC;
          }
 
          &--ground {
-            background: #DEC16B;
+            background: #DA7C4D;
          }
 
          &--poison {
@@ -81,7 +89,7 @@
          }
 
          &--rock {
-            background: #776A3E;
+            background: #C9BB8A;
          }
 
          &--bug {
@@ -93,7 +101,7 @@
          }
 
          &--steel {
-            background: #B7B9D0;
+            background: #5695A3;
          }
 
          &--fire {
@@ -121,7 +129,7 @@
          }
 
          &--dark {
-            background: #75574C;
+            background: #595761;
          }
 
          &--fairy {

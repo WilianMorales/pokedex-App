@@ -1,0 +1,176 @@
+.detail-info {
+
+   &__pokemon {
+      box-shadow : 0 20px 30px rgba(0, 0, 0, 0.38);
+      background-color: #e1dad629;
+      border-radius : 10px;
+   }
+
+   &__evolution {
+
+      h1 {
+         font-size: x-large;
+      }
+   }
+}
+
+.bg-details {
+   margin-top: 20px;
+}
+
+.details-card {
+
+   &__types {
+      display: flex;
+      justify-content: center;
+   }
+
+   &__type {
+      width: 38.4375%;
+      margin: 0 10px;
+      padding: 5px;
+      border-radius: 34px;
+      line-height: 18px;
+      letter-spacing: 0.4px;
+      font-size: 12px;
+      text-align: center;
+      text-transform: capitalize;
+      
+      &--grass {
+         background: #5fbd58;
+         box-shadow: 0 0 20px #5fbd58;
+      }
+
+      &--normal {
+         background: #a0a29f;
+         box-shadow: 0 0 20px #a0a29f;
+      }
+
+      &--fighting {
+         background: #d3425f;
+         box-shadow: 0 0 20px #d3425f;
+      }
+
+      &--flying {
+         background: #a1bbec;
+         box-shadow: 0 0 20px #a1bbec;
+      }
+
+      &--ground {
+         background: #da7c4d;
+         box-shadow: 0 0 20px #da7c4d;
+      }
+
+      &--poison {
+         background: #b763cf;
+         box-shadow: 0 0 20px #b763cf;
+      }
+
+      &--rock {
+         background: #c9bb8a;
+         box-shadow: 0 0 20px #c9bb8a;
+      }
+
+      &--bug {
+         background: #92bc2c;
+         box-shadow: 0 0 20px #92bc2c;
+      }
+
+      &--ghost {
+         background: #70559B;
+         box-shadow: 0 0 20px #70559B;
+      }
+
+      &--steel {
+         background: #5695a3;
+         box-shadow: 0 0 20px #5695a3;
+      }
+
+      &--fire {
+         background: #fba54c;
+         box-shadow: 0 0 20px #fba54c;
+      }
+
+      &--water {
+         background: #6493EB;
+         box-shadow: 0 0 20px #6493EB;
+      }
+
+      &--electric {
+         background: #f2d94e;
+         box-shadow: 0 0 20px #f2d94e;
+      }
+
+      &--psychic {
+         background: #FB5584;
+         box-shadow: 0 0 20px #FB5584;
+      }
+
+      &--ice {
+         background: #9AD6DF;
+         box-shadow: 0 0 20px #9AD6DF;
+      }
+
+      &--dragon {
+         background: #0c69c8;
+         box-shadow: 0 0 20px #0c69c8;
+      }
+
+      &--dark {
+         background: #595761;
+         box-shadow: 0 0 20px #595761;
+      }
+
+      &--fairy {
+         background: #ee90e6;
+         box-shadow: 0 0 20px #ee90e6;
+      }
+   }
+
+   &__about {
+      display: flex;
+      justify-content: space-around;
+
+      &--info {
+         width: 35%;
+         letter-spacing: 0.4px;
+         font-size: 16px;
+         text-align: center;
+
+         span {
+            font-size: 15px;
+            font-weight: 100;
+         }
+      }
+   }
+
+   &__stats {
+      justify-content: center;
+      display: flex;
+      flex-wrap: wrap;
+   }
+}
+
+.progress {
+   background-color:#e9ecef6b !important;
+}
+
+@media (max-width: 576px) {
+   .bg-details {
+      margin-top: -15px;
+   }
+
+   .details-card {
+
+      &__about {
+
+         &--info {
+            font-size: 12px;
+
+            span {
+               font-size: 10px;
+            }
+         }
+      }
+   }
+}
