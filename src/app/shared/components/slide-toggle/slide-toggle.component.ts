@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
       <label class="custom-control-label"
         style="cursor: pointer;"
         for="customSwitches">
-        {{classicMode ? 'Classic' : 'Gif'}}
+        {{classicMode ? 'Gif' : 'Classic'}}
       </label>
     </div>
   `,

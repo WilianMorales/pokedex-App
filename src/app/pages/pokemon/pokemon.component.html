@@ -8,43 +8,36 @@
     </a>
 </div>
 
-<main class="container detail-info">
+<main class="container detail-info" *ngIf="pokemon">
     <section class="detail-info__pokemon">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-sm-4 text-center">
-                    <img src="{{ links }}150.png" alt="NOMBRE" class="img-fluid mx-auto" style="width: 400px;">
-                </div>
+        <div class="container col-12">
+            <div class="row justify-content-center" style="position: relative;">
 
-                <div class="details-card col-sm-6">
+                <div class="col-lg-6 d-flex flex-wrap align-items-center">
+                    <img src="{{ links }}{{pokemon.id}}.png" alt="{{pokemon.name}}" class="img-fluid mx-auto"
+                        style="width: 300px;">
+
                     <div class="bg-details">
-                        <h1 class="text-center">Mewtwo</h1>
+                        <h1 class="text-center">{{pokemon.name}}</h1>
 
                         <div class="details-card__types mb-3">
-                            <div class="details-card__type details-card__type--grass">
-                                <!-- *ngFor="let type of pokemon?.status?.types" [class]="'pokemon-info__type--' + type.type.name" -->
+                            <div class="details-card__type" *ngFor="let type of pokemon.types"
+                                [class]="'details-card__type--' + type.type.name">
                                 <p>
-                                    <img alt="" class="img-fluid" src="assets/type-icons/grass.png" style="width: 15%;">
-                                    Grass
-                                </p>
-                            </div>
-                            <div class="details-card__type details-card__type--poison">
-                                <!-- *ngFor="let type of pokemon?.status?.types" [class]="'pokemon-info__type--' + type.type.name" -->
-                                <p>
-                                    <img alt="" class="img-fluid" src="assets/type-icons/poison.png"
+                                    <img alt="" class="img-fluid" src="assets/type-icons/{{type.type.name}}.png"
                                         style="width: 15%;">
-                                    Poison
+                                    {{type.type.name | titlecase}}
                                 </p>
                             </div>
                         </div>
 
-                        <div class="details-card__about mb-3">
+                        <div class="details-card__about mb-4">
                             <div class="details-card__about--info">
                                 <div class="mt-2 mb-2">
                                     <p>
                                         <img class="img-fluid mr-1" src="assets/icon/weight.svg" alt="weight"
                                             style="width: 15px;">
-                                        1220 kg
+                                        {{pokemon.weight}} kg
                                     </p>
                                 </div>
                                 <div>
@@ -56,7 +49,7 @@
                                     <p>
                                         <img class="img-fluid mr-1" src="assets/icon/height.svg" alt="height"
                                             style="width: 10px;">
-                                        20 m
+                                        {{pokemon.height}} m
                                     </p>
                                 </div>
                                 <div>
@@ -66,9 +59,9 @@
                             <div class="details-card__about--info">
                                 <div class="mt-2 mb-2">
                                     <p>
-                                        <img class="img-fluid mr-1" src="assets/icon/exp.svg" alt="height"
+                                        <img class="img-fluid mr-1" src="assets/icon/exp.svg" alt="exp"
                                             style="width: 18px;">
-                                        340 exp
+                                        {{pokemon.base_experience}} exp
                                     </p>
                                 </div>
                                 <div>
@@ -76,112 +69,39 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="details-card__stats">
-                            <div class="inner">
-                                <table class="table table-borderless text-white">
-                                    <tr>
-                                        <th colspan="3" class="text-center">
-                                            <h5>Base Stats</h5>
-                                        </th>
-                                    </tr>
-    
-                                    <!-- [ngClass]="pokemon.color" [ngStyle]="{'width': stats[0]}"
-                                        [ngClass]="pokemon.color" [ngStyle]="{'width': stats[1]}"
-                                        [ngClass]="pokemon.color" [ngStyle]="{'width': stats[2]}"
-        
-                                        {{statsToShow[2]}} -->
-                                    <tr>
-                                        <td class="text-right" style="white-space: nowrap;">HP</td>
-                                        <td colspan="3">
-                                            <div class="progress" style="height: 20px">
-                                                <div class="progress-bar progress-bar-striped progress-bar-animated rounded-sm"
-                                                    role="progressbar" aria-valuenow="" aria-valuemin="0"
-                                                    aria-valuemax="100">
-                                                    <span>10</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-    
-    
-                                    <tr>
-                                        <td class="text-right" style="white-space: nowrap;">Attack</td>
-                                        <td colspan="3">
-                                            <div class="progress" style="height: 20px">
-                                                <div class="progress-bar progress-bar-striped progress-bar-animated rounded-sm"
-                                                    role="progressbar" aria-valuenow="" aria-valuemin="0"
-                                                    aria-valuemax="100">
-                                                    <span>20</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-right" style="white-space: nowrap;">Defence</td>
-                                        <td colspan="3">
-                                            <div class="progress" style="height: 20px">
-                                                <div class="progress-bar progress-bar-striped progress-bar-animated rounded-sm"
-                                                    role="progressbar" aria-valuenow="" aria-valuemin="0"
-                                                    aria-valuemax="100">
-                                                    <span>30</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-right" style="white-space: nowrap;">Sp. Attack
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="progress" style="height: 20px">
-                                                <div class="progress-bar progress-bar-striped progress-bar-animated rounded-sm"
-                                                    role="progressbar" aria-valuenow="" aria-valuemin="0"
-                                                    aria-valuemax="100" style="width: 100px;">
-                                                    <span>40</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-right" style="white-space:nowrap;">Sp. Defence
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="progress" style="height: 20px">
-                                                <div class="progress-bar progress-bar-striped progress-bar-animated rounded-sm"
-                                                    role="progressbar" aria-valuenow="" aria-valuemin="0"
-                                                    aria-valuemax="100">
-                                                    <span>10</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-right" style="white-space:nowrap;">Speed</td>
-                                        <td colspan="3">
-                                            <div class="progress" style="height: 20px">
-                                                <div class="progress-bar progress-bar-striped progress-bar-animated rounded-sm"
-                                                    role="progressbar" aria-valuenow="" aria-valuemin="0"
-                                                    aria-valuemax="100">
-                                                    <span>50</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-
                     </div>
+                </div>
 
+                <div class="details-card col-lg-5 d-flex flex-wrap justify-content-center">
+                    <div class="details-card__stats my-auto mx-auto ">
+                        <div class="inner">
+                            <table class="table table-borderless text-white">
+                                <tr>
+                                    <th colspan="2" class="text-center">
+                                        <h5>Base Stats</h5>
+                                    </th>
+                                </tr>
 
+                                <tr *ngFor="let stat of pokemon.stats | baseStats">
+                                    <td class="text-right br-table">{{stat.stat.name}}</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated rounded-sm"
+                                                role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                                                [style.width]="stat.base_stat + '%'">
+                                                <span>{{stat.base_stat}}</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
             </div>
         </div>
 
-    </section>
-    <section class="detail-info__evolution mt-4 mb-2">
-        <h1 class="text-center text-uppercase">Evolution Chain</h1>
     </section>
 
     <div class="row justify-content-center"></div>

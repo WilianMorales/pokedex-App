@@ -3,18 +3,21 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { PokeCardComponent } from './components/poke-card/poke-card.component';
 import { SlideToggleComponent } from './components/slide-toggle/slide-toggle.component';
+import { BaseStatsPipe } from './pipes/base-stats.pipe';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     PokeCardComponent,
-    SlideToggleComponent
+    SlideToggleComponent,
+    BaseStatsPipe
   ],
   exports: [
     HeaderComponent,
     PokeCardComponent,
-    SlideToggleComponent
+    SlideToggleComponent,
+    BaseStatsPipe
   ],
   imports: [
     CommonModule

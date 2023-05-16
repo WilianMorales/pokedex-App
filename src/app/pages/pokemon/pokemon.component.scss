@@ -14,10 +14,6 @@
    }
 }
 
-.bg-details {
-   margin-top: 20px;
-}
-
 .details-card {
 
    &__types {
@@ -151,16 +147,38 @@
    }
 }
 
-.progress {
-   background-color:#e9ecef6b !important;
+.bg-details {
+   text-transform: capitalize;
 }
 
+.br-table {
+   white-space: nowrap;
+   border-right: 1px solid #ffffff31;
+}
+
+
+.progress {
+   background-color:#e9ecef6b !important;
+   width: 250px;
+   height: 22px;
+
+   span {
+      text-align: right;
+      padding-right: 6px;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+   }
+}
+
+
 @media (max-width: 576px) {
-   .bg-details {
-      margin-top: -15px;
+
+   .progress {
+      width: 180px;
    }
 
    .details-card {
+      margin-top: -8px;
 
       &__about {
 
