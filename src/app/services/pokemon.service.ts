@@ -33,16 +33,16 @@ export class PokemonService {
         response.results.map((value: IPokemon) => {
           this.getPokemonDetail(value.name).subscribe(
             (res) => (value.status = res)
-            )
-          });
-        })
-      );
-      }
+          )
+        });
+      })
+    );
+  }
 
   getPaginationPrevious(goback: number) {
-        this.offsetPage = this.offsetPage - goback;
+    this.offsetPage = this.offsetPage - goback;
 
-        if(this.offsetPage === 0) {
+    if (this.offsetPage === 0) {
       localStorage.setItem('valor', 'stop');
     }
 
@@ -55,9 +55,9 @@ export class PokemonService {
         response.results.map((value: IPokemon) => {
           this.getPokemonDetail(value.name).subscribe(
             (res) => (value.status = res)
-            )
-          });
-        })
+          )
+        });
+      })
     );
   }
 
@@ -73,14 +73,22 @@ export class PokemonService {
         response.results.map((value: IPokemon) => {
           this.getPokemonDetail(value.name).subscribe(
             (res) => (value.status = res)
-            )
-          });
-        })
+          )
+        });
+      })
     );
   }
 
   getPokemonDetail(name: number | string): Observable<IPokemonDetails> {
     return this.http.get<IPokemonDetails>(this.BASE_URL + '/pokemon/' + name);
+  }
+
+  getEvolutionChain(id: number): Observable<any> {
+    return this.http.get<IPokemonDetails>(this.BASE_URL + '/evolution-chain/' + id);
+  }
+
+  getSpecies(name: string): Observable<any> {
+    return this.http.get<IPokemonDetails>(this.BASE_URL + '/pokemon-species/' + name);
   }
 
 }

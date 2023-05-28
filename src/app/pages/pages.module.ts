@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { PokemonComponent } from './pokemon/pokemon.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { PokemonComponent } from './pokemon/pokemon.component';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ]
 })
 export class PagesModule { }

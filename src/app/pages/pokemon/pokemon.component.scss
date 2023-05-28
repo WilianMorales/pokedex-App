@@ -1,9 +1,9 @@
 .detail-info {
 
    &__pokemon {
-      box-shadow : 0 20px 30px rgba(0, 0, 0, 0.38);
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.38);
       background-color: #e1dad629;
-      border-radius : 10px;
+      border-radius: 10px;
    }
 
    &__evolution {
@@ -11,6 +11,55 @@
       h1 {
          font-size: x-large;
       }
+
+      .evo-container {
+         align-self: center;
+         padding: 10px;
+
+         .dne {
+            text-align: center;
+            color: #ffffff92;
+            padding: 0.5rem;
+         }
+
+         .evo-img {
+            width: 100px;
+            cursor: pointer;
+         }
+
+         .evo-name {
+            border-radius: 5px;
+            padding: 6px 10px;
+            white-space: nowrap;
+            line-height: normal;
+
+            span {
+               background-color: #000000c2;
+               box-shadow: 0 20px 30px rgba(0, 0, 0, 0.655);
+               transition: background-color 1s ease-in, width 1.5s ease-in-out;
+               margin-top: 5px;
+            }
+         }
+      }
+
+      /* .arrow-container {
+         align-self: center;
+         text-align: center;
+         flex-direction: column-reverse;
+         display: flex;
+
+         .evo-arrow {
+            width : auto;
+            height: 40px;
+            margin: auto;
+         }
+
+      }
+
+      .evo-desc {
+         color: #ffffffe6;
+         font-size: small;
+      } */
    }
 }
 
@@ -31,7 +80,7 @@
       font-size: 12px;
       text-align: center;
       text-transform: capitalize;
-      
+
       &--grass {
          background: #5fbd58;
          box-shadow: 0 0 20px #5fbd58;
@@ -158,18 +207,17 @@
 
 
 .progress {
-   background-color:#e9ecef6b !important;
+   background-color: #e9ecef6b !important;
    width: 250px;
    height: 22px;
 
    span {
       text-align: right;
-      padding-right: 6px;
+      padding-right : 6px;
       font-size: 16px;
       letter-spacing: 0.5px;
    }
 }
-
 
 @media (max-width: 576px) {
 
@@ -191,4 +239,17 @@
          }
       }
    }
+
 }
+
+/* @media (max-width: 768px) {
+
+   .evo-arrow {
+      transform: rotate(90deg);
+      padding: 10px;
+   }
+
+   .evo-desc {
+      font-size: x-small;
+   }
+} */
