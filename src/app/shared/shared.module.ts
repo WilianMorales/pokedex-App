@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { PokeCardComponent } from './components/poke-card/poke-card.component';
 import { SlideToggleComponent } from './components/slide-toggle/slide-toggle.component';
 import { BaseStatsPipe } from './pipes/base-stats.pipe';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { BaseStatsPipe } from './pipes/base-stats.pipe';
     BaseStatsPipe
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ]
 })
 export class SharedModule { }

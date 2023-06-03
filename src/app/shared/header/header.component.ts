@@ -4,8 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-header',
   template: `
     <header>
-          <div class="logo">
-              <img src="assets/images/logo.png" width="320" height="120" alt="logo">
+          <div class="logo animate__animated animate__fadeIn animate__slower" [routerLink]="['/home']">
+              <img src="assets/images/logo.svg" width="320" height="120" alt="logo">
           </div>
       </header>
   `,

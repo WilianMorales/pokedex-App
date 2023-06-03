@@ -1,0 +1,29 @@
+.bg-home {
+    min-height: 100vh;
+    background: #00000096;
+    margin-bottom: -50px;
+
+    .home-div {
+        position: relative;
+        .img-poke {
+            margin-top: 0.5rem;
+            filter: drop-shadow(0 0 20px #e5e5e55d);
+        }
+    }
+}
+
+@media (min-width: 576px) {
+
+    .bg-home {
+
+        .home-div {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+
+            .img-poke {
+                margin-top: 0;
+            }
+        }
+    }
+}
