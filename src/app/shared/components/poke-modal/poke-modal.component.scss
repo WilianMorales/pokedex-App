@@ -1,0 +1,34 @@
+.modal-content {
+    color: #000000db;
+}
+
+.favorite-pokemon {
+    width: 100%;
+    height: 80px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.184) 0px 1px 4px;
+    border-radius: 4px;
+    justify-content: space-evenly;
+    background-color: #f3f3f3;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    &__name {
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .pokemon-img-fav {
+        margin-left: 0px;
+        height: 100%;
+    }
+
+    .remove-icon {
+        height: 25px;
+        margin-left: 5px;
+    }
+}

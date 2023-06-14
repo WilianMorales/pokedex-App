@@ -10,7 +10,12 @@ import { PokemonService } from '@services/pokemon.service';
 })
 export class PokeCardComponent {
 
+  link_gif = 'https://projectpokemon.org/images/normal-sprite/';
+  link_png = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/';
+
   @Input() pokemons?: IPokemon[];
+
+  classicMode: boolean = true;
 
   constructor(
     private pokemonService: PokemonService,
@@ -32,5 +37,21 @@ export class PokeCardComponent {
         this.router.navigate(['/pokemon/', pokemon.name]);
       })
   }
+
+  /* toggleFavorite(): void {
+    const pokemonId = this.pokemons.order.toString();
+    this.favoriteService.toggleFavorite(pokemonId);
+    const message = this.favoriteService.isFavorite(pokemonId) ? 'Añadido a favoritos' : 'Eliminado de favoritos';
+    this.toastr.success(message);
+  }
+
+  isFavorite(): boolean {
+    const pokemonId = this.pokemons.order.toString();
+    return this.favoriteService.isFavorite(pokemonId) ;
+  } */
+
+  /* getIcon(): string {
+    return this.pokemons.isFavorite 
+  } */
 
 }

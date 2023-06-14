@@ -14,8 +14,8 @@
             <div class="row justify-content-center" style="position: relative;">
 
                 <div class="col-lg-6 d-flex flex-wrap align-items-center">
-                    <img src="{{ links }}{{pokemon.id}}.png" alt="{{pokemon.name}}" class="img-fluid mx-auto"
-                        style="width: 300px;">
+                    <img appImgBroken src="{{ links }}{{pokemon.id}}.png"
+                        alt="{{pokemon.name}}" class="img-fluid mx-auto" style="width: 300px;">
 
                     <div class="bg-details">
                         <h1 class="text-center">{{pokemon.name}}</h1>
@@ -118,11 +118,12 @@
                         <ng-container *ngIf="pokemon.evolutions.length === 1">
                             <div class="dne">This Pokémon does not evolve.</div>
                         </ng-container>
-    
+
                         <div class="mb-2">
-                            <img alt="" class="evo-img mx-auto d-block" src="{{links}}{{evolution.id}}.png">
+                            <img appImgBroken alt="{{evolution.name}}" class="evo-img mx-auto d-block"
+                                src="{{links}}{{evolution.id}}.png">
                         </div>
-    
+
                         <div class="text-uppercase text-center">
                             #{{evolution.id}}
                             <div class="evo-name">

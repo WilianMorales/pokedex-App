@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { IPokemon, IPokemonResponse } from '@interfaces/pokemon-page.interface';
 import { IPokemonDetails } from '@interfaces/pokemon.interface';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -89,6 +89,14 @@ export class PokemonService {
 
   getSpecies(name: string): Observable<any> {
     return this.http.get<IPokemonDetails>(this.BASE_URL + '/pokemon-species/' + name);
+  }
+
+  getType(){
+    return this.http.get<IPokemonResponse>(this.BASE_URL + '/type');
+  }
+
+  getPokemonByType(type: string): Observable<any> {
+    return this.http.get<any>(`${type}`);
   }
 
 }

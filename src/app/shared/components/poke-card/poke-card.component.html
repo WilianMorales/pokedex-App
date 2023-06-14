@@ -1,8 +1,9 @@
 <div class="row mt-4">
   <div class="col-12 col-sm-4 col-md-3 mb-3" *ngFor="let pokemon of pokemons">
     <div class="pokemon-card">
-      <div class="pokemon-card__image" (click)="onClickDetail(pokemon.name)">
-        <img src="https://projectpokemon.org/images/normal-sprite/{{pokemon.name}}.gif" alt="{{pokemon.name}}">
+      <div class="pokemon-card__image" (click)="onClickDetail(pokemon.name)" *ngIf="pokemon.status">
+        <img appImgBroken *ngIf="classicMode" src="{{link_gif}}{{pokemon.name}}.gif" [alt]="pokemon.name">
+        <img appImgBroken *ngIf="!classicMode" src="{{link_png}}{{pokemon.status.id}}.png" width="100px" [alt]="pokemon.name">
       </div>
 
       <div class="pokemon-info">
@@ -12,10 +13,10 @@
         </span>
         <div class="pokemon-info__favorite">
           <figure>
-            <img width="20" height="20" src="assets/icon/heart.svg" alt="heart">
+            <img rel="preload" as="image" width="20" height="20" src="assets/icon/heart.svg"
+              [alt]="pokemon.name">
           </figure>
         </div>
-
 
         <div class="pokemon-info__name" (click)="onClickDetail(pokemon.name)">
           {{pokemon.name}}

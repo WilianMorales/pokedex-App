@@ -4,13 +4,9 @@
     <div class="search-container d-flex form-inline my-2 ">
         <input class="form-control" type="search" placeholder="Buscar pokemon" aria-label="Search">
         <span class="mr-sm-3 ml-sm-3">or</span>
-        <select class="form-control">
-            <option>All</option>
-            <option>Fire</option>
-            <option>Ghost</option>
-            <option>Electric</option>
-            <option>physicolop</option>
-            <option>Normal</option>
+        <select id="pokemonType" [(ngModel)]="selectedType" (change)="onTypeChange()" class="form-control">
+            <option value="" disabled>--Select a type--</option>
+            <option *ngFor="let type of types" [value]="type.url">{{ type.name }}</option>
         </select>
     </div>
 
@@ -23,13 +19,13 @@
                 <figure class="card__favorite mr-1">
                     <img width="30" height="30" src="assets/icon/heart-solid.svg" alt="heart">
                 </figure>
-                <p class="favorite-link">Favorites</p>
-                <p class="ml-2 badge badge-danger">+10</p>
+                <p class="favorite-link" data-toggle="modal" data-target="#favoriteModalCenter">Favorites</p>
+                <p class="ml-2 badge badge-danger">+{{getFavCount()}}</p>
             </div>
         </div>
     </section>
 
-    <app-poke-card [pokemons]="pokemons"></app-poke-card>
+    <app-poke-card *ngIf="pokemons.length > 0" [pokemons]="pokemons"></app-poke-card>
 
     <nav class="pagination" aria-label="Page navigation">
         <button class="btn btn-pagination" (click)="onPrevious()" [disabled]="btnActive">
@@ -40,7 +36,7 @@
             </svg>
             Prev
         </button>
-        <button class="btn btn-pagination" (click)="onNext()"> 
+        <button class="btn btn-pagination" (click)="onNext()">
             Next
             <svg viewBox="-100.9 99.1 61.9 105.9" style="width: 7px;margin-left: 4px;fill: white;">
                 <path
@@ -49,4 +45,7 @@
             </svg>
         </button>
     </nav>
+
 </div>
+
+<app-poke-modal></app-poke-modal>

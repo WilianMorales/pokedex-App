@@ -5,6 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { RouterModule } from '@angular/router';
 import { InfoComponent } from './info/info.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { InfoComponent } from './info/info.component';
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ]
 })
 export class PagesModule { }

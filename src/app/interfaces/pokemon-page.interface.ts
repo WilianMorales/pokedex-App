@@ -12,4 +12,5 @@ export interface IPokemon {
     url:   string;
     order: number;
     status: IPokemonDetails;
+    isFavorite?: boolean;
 }
