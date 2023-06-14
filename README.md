@@ -1,27 +1,42 @@
+<div align="center">
+  <img width="500px" src="https://raw.githubusercontent.com/WilianMorales/pokedex-App/main/src/assets/images/pokereu.jpg">
+</div>
+
 # Pokedex
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.18.
 
-## Development server
+### DEMO: [App Pokedex](https://ng-pokedev.netlify.app/)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Functionalities
 
-## Code scaffolding
+- [x] Responsive Design
+- [x] List all Pokémon of all generations
+- [x] Show information about pokemons and their evolutions
+- [x] filter the data of the pokemon according to its evolutions
+- [ ] Search for a pokemon
+- [ ] Filter pokemon according to its type
+- [ ] Change the mode of the image using a SlideToggle
+- [ ] Add pokemon to favorites
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Responsive
 
-## Build
+![Design preview for Mobile](./mobile-preview.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+![Design preview for Desktop](./desktop-preview.png)
 
-## Running unit tests
+### The following API was used:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+> PokeAPI --> https://pokeapi.co/
 
-## Running end-to-end tests
+## Implemented Dependencies: 
+* ngx-toastr
+```
+npm i ngx-toastr
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Note: 
+### Install dependencies for running this project
+```
+npm install
+```
