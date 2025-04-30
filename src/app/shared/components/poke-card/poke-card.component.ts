@@ -15,11 +15,12 @@ export class PokeCardComponent {
 
   @Input() pokemons?: IPokemon[];
 
-  classicMode: boolean = true;
+  @Input() classicMode: boolean = true;
 
   constructor(
     private pokemonService: PokemonService,
-    private router: Router) { }
+    private router: Router
+  ) { }
 
   // TODO: Metodo para concatenar 00 delante del id del pokemon.
   leadingZero(str: string | number, size = 3): string {
@@ -37,21 +38,5 @@ export class PokeCardComponent {
         this.router.navigate(['/pokemon/', pokemon.name]);
       })
   }
-
-  /* toggleFavorite(): void {
-    const pokemonId = this.pokemons.order.toString();
-    this.favoriteService.toggleFavorite(pokemonId);
-    const message = this.favoriteService.isFavorite(pokemonId) ? 'Añadido a favoritos' : 'Eliminado de favoritos';
-    this.toastr.success(message);
-  }
-
-  isFavorite(): boolean {
-    const pokemonId = this.pokemons.order.toString();
-    return this.favoriteService.isFavorite(pokemonId) ;
-  } */
-
-  /* getIcon(): string {
-    return this.pokemons.isFavorite 
-  } */
 
 }

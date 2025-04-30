@@ -16,7 +16,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - [x] filter the data of the pokemon according to its evolutions
 - [ ] Search for a pokemon
 - [ ] Filter pokemon according to its type
-- [ ] Change the mode of the image using a SlideToggle
+- [x] Change the mode of the image using a SlideToggle
 - [ ] Add pokemon to favorites
 
 ## Responsive

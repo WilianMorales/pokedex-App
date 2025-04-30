@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { PokemonService } from '@services/pokemon.service';
 import { IPokemon } from '@interfaces/pokemon-page.interface';
 import { LocalStorageService } from '@services/localStorage.service';
+import { ImageModeService } from '@services/imageMode.service';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,8 @@ export class HomeComponent implements OnInit {
 
   filteredPokemonList?: any[];
 
+  classicMode: boolean = true;
+
   selectedType: string = '';
 
   advance = 0;
@@ -24,12 +27,17 @@ export class HomeComponent implements OnInit {
   btnActive: boolean = true;
 
   constructor(private pokemonService: PokemonService,
-    private favoriteService: LocalStorageService) { }
+    private favoriteService: LocalStorageService,
+    private imageModeService: ImageModeService
+  ) { }
 
   ngOnInit(): void {
     localStorage.removeItem('valor');
     this.loadPage();
     this.getType();
+    this.imageModeService.classicMode$.subscribe(mode => {
+      this.classicMode = mode;
+    });
   }
 
   loadPage(): void {

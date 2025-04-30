@@ -25,7 +25,7 @@
         </div>
     </section>
 
-    <app-poke-card *ngIf="pokemons.length > 0" [pokemons]="pokemons"></app-poke-card>
+    <app-poke-card *ngIf="pokemons.length > 0" [pokemons]="pokemons" [classicMode]="classicMode"></app-poke-card>
 
     <nav class="pagination" aria-label="Page navigation">
         <button class="btn btn-pagination" (click)="onPrevious()" [disabled]="btnActive">

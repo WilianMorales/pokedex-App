@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ImageModeService } from '@services/imageMode.service';
 
 @Component({
   selector: 'app-slide-toggle',
@@ -8,7 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
         class="custom-control-input"
         id="customSwitches"
         [checked]="classicMode"
-        (change)="classicMode = !classicMode">
+        (change)="onToggle()">
       <label class="custom-control-label"
         style="cursor: pointer;"
         for="customSwitches">
@@ -22,9 +23,16 @@ export class SlideToggleComponent implements OnInit {
 
   classicMode: boolean = true;
 
-  constructor() { }
+  constructor(private imageModeService: ImageModeService) { }
 
   ngOnInit(): void {
+    this.imageModeService.classicMode$.subscribe(mode => {
+      this.classicMode = mode;
+    });
+  }
+
+  onToggle(): void {
+    this.imageModeService.toggleMode();
   }
 
 }

@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageService {
 
+  private readonly FAVORITES_KEY = 'MY_FAVORITES';
   private favorites: string[] = [];
 
   constructor() {
-    const storedFavorites = localStorage.getItem('MY_FAVORITES');
+    const storedFavorites = localStorage.getItem(this.FAVORITES_KEY);
     if (storedFavorites) {
       this.favorites = JSON.parse(storedFavorites);
     }
@@ -28,11 +28,10 @@ export class LocalStorageService {
     }
 
     // Guardar los cambios en el localStorage
-    localStorage.setItem('favorites', JSON.stringify(this.favorites));
+    localStorage.setItem(this.FAVORITES_KEY, JSON.stringify(this.favorites));
   }
 
   isFavorite(pokemonId: string): boolean {
     return this.favorites.includes(pokemonId);
   }
-
 }
