@@ -2,10 +2,11 @@
 
 <div class="container mt-3 animate__animated animate__fadeIn animate__slower">
     <div class="search-container d-flex form-inline my-2 ">
-        <input class="form-control" type="search" placeholder="Buscar pokemon" aria-label="Search">
+        <input class="form-control" type="search" placeholder="Buscar pokemon" aria-label="Search"
+            (input)="onSearchChange($event)">
         <span class="mr-sm-3 ml-sm-3">or</span>
         <select id="pokemonType" [(ngModel)]="selectedType" (change)="onTypeChange()" class="form-control">
-            <option value="" disabled>--Select a type--</option>
+            <option value="" >--Select a type--</option>
             <option *ngFor="let type of types" [value]="type.url">{{ type.name }}</option>
         </select>
     </div>
@@ -25,10 +26,19 @@
         </div>
     </section>
 
-    <app-poke-card *ngIf="pokemons.length > 0" [pokemons]="pokemons" [classicMode]="classicMode"></app-poke-card>
+    <app-poke-card
+        *ngIf="filteredPokemonList.length > 0"
+        [pokemons]="filteredPokemonList"
+        [classicMode]="classicMode"
+        (goToDetail)="onPokemonSelected($event)">
+    </app-poke-card>
 
-    <nav class="pagination" aria-label="Page navigation">
-        <button class="btn btn-pagination" (click)="onPrevious()" [disabled]="btnActive">
+    <div *ngIf="notFound" class="not-found-message">
+      <p>El Pokémon que buscas no existe, inténtalo de nuevo.</p>
+    </div>
+
+    <nav class="pagination" aria-label="Page navigation" *ngIf="shouldShowPagination()">
+        <button class="btn btn-pagination" (click)="onPrevious()" [disabled]="advance === 0">
             <svg viewBox="-100.9 99.1 61.9 105.9" style="width: 7px;margin-right: 4px;fill: white;">
                 <path
                     d="m-98.2 158.8 43.5 43.5c1.7 1.7 4 2.7 6.5 2.7s4.8-1 6.5-2.7c1.7-1.7 2.7-4 2.7-6.5s-1-4.8-2.7-6.5l-37.2-37.2 37.2-37.2c1.7-1.7 2.7-4 2.7-6.5s-1-4.8-2.6-6.5c-1.8-1.9-4.2-2.8-6.6-2.8-2.3 0-4.6.9-6.5 2.6-11.5 11.4-41.2 41-43.3 43l-.2.2c-3.6 3.6-3.6 10.3 0 13.9z">

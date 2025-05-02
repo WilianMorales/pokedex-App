@@ -24,49 +24,9 @@ export class PokemonService {
   }
 
   // TODO: Metodo para paginar la lista
-  getPokemonPage(): Observable<IPokemonResponse> {
+  getPokemonPage(offset: number = 0): Observable<IPokemonResponse> {
     return this.http.get<IPokemonResponse>(`${this.BASE_URL}/pokemon`, {
-      params: this.params
-    }).pipe(
-      tap((response: IPokemonResponse) => response),
-      tap((response) => {
-        response.results.map((value: IPokemon) => {
-          this.getPokemonDetail(value.name).subscribe(
-            (res) => (value.status = res)
-          )
-        });
-      })
-    );
-  }
-
-  getPaginationPrevious(goback: number) {
-    this.offsetPage = this.offsetPage - goback;
-
-    if (this.offsetPage === 0) {
-      localStorage.setItem('valor', 'stop');
-    }
-
-    const params = { ...this.params, offset: this.offsetPage };
-    return this.http.get<IPokemonResponse>(`${this.BASE_URL}/pokemon`, {
-      params
-    }).pipe(
-      tap((response: IPokemonResponse) => response),
-      tap((response) => {
-        response.results.map((value: IPokemon) => {
-          this.getPokemonDetail(value.name).subscribe(
-            (res) => (value.status = res)
-          )
-        });
-      })
-    );
-  }
-
-  getPaginationNext(advance: number) {
-    this.offsetPage = this.offsetPage + advance;
-
-    const params = { ...this.params, offset: this.offsetPage };
-    return this.http.get<IPokemonResponse>(`${this.BASE_URL}/pokemon`, {
-      params
+      params: { ...this.params, offset: offset.toString() }
     }).pipe(
       tap((response: IPokemonResponse) => response),
       tap((response) => {
@@ -80,23 +40,25 @@ export class PokemonService {
   }
 
   getPokemonDetail(name: number | string): Observable<IPokemonDetails> {
-    return this.http.get<IPokemonDetails>(this.BASE_URL + '/pokemon/' + name);
+    return this.http.get<IPokemonDetails>(`${this.BASE_URL}/pokemon/${name}`);
   }
 
   getEvolutionChain(id: number): Observable<any> {
-    return this.http.get<IPokemonDetails>(this.BASE_URL + '/evolution-chain/' + id);
+    return this.http.get<IPokemonDetails>(`${this.BASE_URL}/evolution-chain/${id}`);
   }
 
   getSpecies(name: string): Observable<any> {
-    return this.http.get<IPokemonDetails>(this.BASE_URL + '/pokemon-species/' + name);
+    return this.http.get<IPokemonDetails>(`${this.BASE_URL}/pokemon-species/${name}`);
   }
 
-  getType(){
-    return this.http.get<IPokemonResponse>(this.BASE_URL + '/type');
+  getType() {
+    return this.http.get<IPokemonResponse>(`${this.BASE_URL}/type`);
   }
 
-  getPokemonByType(type: string): Observable<any> {
-    return this.http.get<any>(`${type}`);
+  getPokemonByType(type: string, offset: number = 0): Observable<any> {
+    return this.http.get<any>(`${type}`, {
+      params: { ...this.params, offset: offset.toString() }
+    });
   }
 
 }

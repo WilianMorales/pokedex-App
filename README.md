@@ -6,7 +6,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.18.
 
-### DEMO: [App Pokedex](https://ng-pokedev.netlify.app/)
+### DEMO: [App Pokedev](https://ng-pokedev.netlify.app/)
 
 # Functionalities
 
@@ -14,8 +14,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - [x] List all Pokémon of all generations
 - [x] Show information about pokemons and their evolutions
 - [x] filter the data of the pokemon according to its evolutions
-- [ ] Search for a pokemon
-- [ ] Filter pokemon according to its type
+- [x] Search for a pokemon
+- [x] Filter pokemon according to its type
 - [x] Change the mode of the image using a SlideToggle
 - [ ] Add pokemon to favorites
 

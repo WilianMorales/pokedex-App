@@ -34,4 +34,6 @@ export class LocalStorageService {
   isFavorite(pokemonId: string): boolean {
     return this.favorites.includes(pokemonId);
   }
+
+  
 }

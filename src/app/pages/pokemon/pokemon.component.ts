@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { PokemonService } from '@services/pokemon.service';
 import { Subscription } from 'rxjs';
 
@@ -18,7 +19,7 @@ export class PokemonComponent implements OnInit {
   constructor(
     private pokemonService: PokemonService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private location: Location
   ) { }
 
   set subscription(subscription: Subscription) {
@@ -27,7 +28,7 @@ export class PokemonComponent implements OnInit {
 
   ngOnInit(): void {
     localStorage.removeItem('valor');
-    
+
     this.subscription = this.activatedRoute.params
       .subscribe(params => {
         this.subscription = this.pokemonService.getPokemonDetail(params.name)
@@ -75,7 +76,7 @@ export class PokemonComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigateByUrl('/pokemon');
+    this.location.back();
   }
 
 }

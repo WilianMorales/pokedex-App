@@ -8,7 +8,7 @@ export class ImgBrokenDirective {
   @HostListener('error') handlerError(): void {
     const elNative = this.elHost.nativeElement
     console.log('Esta immagen revento.');
-    elNative.src = 'assets/images/pokeball.png';
+    elNative.src = 'assets/images/pokeball.webp';
     elNative.width = 90
   }
 

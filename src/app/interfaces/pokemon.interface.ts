@@ -1,4 +1,6 @@
-export interface IPokemonDetails {
+import { IPokemon } from "./pokemon-page.interface";
+
+export interface IPokemonDetails extends IPokemon {
     abilities:                Ability[];
     base_experience:          number;
     forms:                    Species[];
