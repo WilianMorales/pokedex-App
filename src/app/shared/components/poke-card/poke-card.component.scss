@@ -1,24 +1,37 @@
 .pokemon-card {
-   width: 100%;
-   display: flex;
-   flex-direction: column;
-   box-shadow: 0 20px 30px rgb(0 0 0 / 38%);
-   background-color: #e1dad629;
-   border-radius: 10px;
-   border: none !important;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 30px rgb(0 0 0 / 38%);
+  background-color: #e1dad629;
+  border-radius: 10px;
+  border: none !important;
 
-   &__image {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 160px;
-      cursor: pointer;
-   }
+  &__image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    justify-content: center;
+    overflow: hidden;
+    align-items: center;
+    height: 160px;
+    cursor: pointer;
+  }
+}
+
+.pokeball-bg {
+  position: absolute;
+  width: 200px;
+  height: 150px;
+  opacity: 0.5;
+  z-index: -1;
+  align-items: center;
+  pointer-events: none;
 }
 
 .pokemon-info {
     border-radius: 0 0 10px 10px;
-    background-color: #000000cc;      
+    background-color: #0000009e;
 
     &__name, &__number {
         padding: 0 10px;
@@ -41,7 +54,7 @@
         font-size: 145%;
         font-weight: 500;
         margin:  0.15em 0 5px;
-        text-transform: capitalize; 
+        text-transform: capitalize;
         text-align: center;
         cursor: pointer;
     }
@@ -63,7 +76,7 @@
         font-size: 12px;
         text-align: center;
         text-transform: capitalize;
-        
+
         &--grass {
            background: #5FBD58;
         }

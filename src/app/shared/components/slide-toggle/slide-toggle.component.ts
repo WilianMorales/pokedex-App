@@ -13,7 +13,8 @@ import { ImageModeService } from '@services/imageMode.service';
       <label class="custom-control-label"
         style="cursor: pointer;"
         for="customSwitches">
-        {{classicMode ? 'Gif' : 'Classic'}}
+        Modo:
+        {{ classicMode ? 'Classic' : 'Gif' }}
       </label>
     </div>
   `,
@@ -21,7 +22,7 @@ import { ImageModeService } from '@services/imageMode.service';
 })
 export class SlideToggleComponent implements OnInit {
 
-  classicMode: boolean = true;
+  classicMode: boolean = false;
 
   constructor(private imageModeService: ImageModeService) { }
 
