@@ -23,15 +23,21 @@ export class LocalStorageService {
     return [...this.favorites];
   }
 
-  toggleFavorite(id: number, name: string): void {
+  toggleFavorite(id: number, name: string): boolean {
     const index = this.favorites.findIndex(p => p.id === id);
 
     if (index === -1) {
       this.favorites.push({ id, name });
+      this.save();
+      return true;
     } else {
       this.favorites.splice(index, 1);
+      this.save();
+      return false;
     }
+  }
 
+  private save(): void {
     localStorage.setItem(this.FAVORITES_KEY, JSON.stringify(this.favorites));
     this.favoritesSubject.next(this.favorites);
   }

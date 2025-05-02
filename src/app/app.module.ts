@@ -21,7 +21,10 @@ import { SpinnerInterceptor } from '@shared/interceptors/spinner.interceptor';
     SharedModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      timeOut: 3000,
+    })
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true}

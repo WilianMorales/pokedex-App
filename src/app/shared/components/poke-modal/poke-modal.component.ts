@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { FavoritePokemon } from '@interfaces/favorite-pokemon.interface';
 import { LocalStorageService } from '@services/localStorage.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-poke-modal',
@@ -16,7 +17,11 @@ export class PokeModalComponent implements OnInit, OnDestroy {
   favoritePokemons: FavoritePokemon[] = [];
   private subscription!: Subscription;
 
-  constructor(private localStorageService: LocalStorageService, private router: Router) { }
+  constructor(
+    private localStorageService: LocalStorageService,
+    private router: Router,
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit(): void {
     this.subscription = this.localStorageService.favorites$.subscribe(favorites => {
@@ -28,6 +33,7 @@ export class PokeModalComponent implements OnInit, OnDestroy {
     const name = this.favoritePokemons.find(p => p.id === id)?.name;
     if (name) {
       this.localStorageService.toggleFavorite(id, name);
+      this.toastr.error('Se eliminado de favoritos', `${name.toLocaleUpperCase()}`);
     }
   }
 

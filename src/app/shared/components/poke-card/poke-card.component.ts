@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IPokemon } from '@interfaces/pokemon-page.interface';
 import { LocalStorageService } from '@services/localStorage.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-poke-card',
@@ -16,7 +17,7 @@ export class PokeCardComponent {
   link_gif = 'https://projectpokemon.org/images/normal-sprite/';
   link_png = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/';
 
-  constructor(private localStorageService: LocalStorageService) { }
+  constructor(private localStorageService: LocalStorageService, private toastr: ToastrService) { }
 
   // TODO: Metodo para concatenar 00 delante del id del pokemon.
   leadingZero(str: string | number, size = 3): string {
@@ -33,8 +34,12 @@ export class PokeCardComponent {
   }
 
   toggleFavorite(id: number, name: string): void {
-    if (id !== undefined) {
-      this.localStorageService.toggleFavorite(id, name);
+    const isFavorite = this.localStorageService.toggleFavorite(id, name);
+
+    if (isFavorite) {
+      this.toastr.success('Se agrego a favoritos', `${name.toLocaleUpperCase()}`);
+    } else {
+      this.toastr.error('Se eliminado de favoritos', `${name.toLocaleUpperCase()}`);
     }
   }
 
