@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { FavoritePokemon } from '@interfaces/favorite-pokemon.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -6,34 +8,36 @@ import { Injectable } from '@angular/core';
 export class LocalStorageService {
 
   private readonly FAVORITES_KEY = 'MY_FAVORITES';
-  private favorites: string[] = [];
+  private favorites: FavoritePokemon[] = [];
+
+  private favoritesSubject = new BehaviorSubject<FavoritePokemon[]>([]);
+  favorites$ = this.favoritesSubject.asObservable();
 
   constructor() {
     const storedFavorites = localStorage.getItem(this.FAVORITES_KEY);
-    if (storedFavorites) {
-      this.favorites = JSON.parse(storedFavorites);
-    }
+    this.favorites = storedFavorites ? JSON.parse(storedFavorites) : [];
+    this.favoritesSubject.next(this.favorites);
   }
 
-  getFavorites(): string[] {
-    return this.favorites;
+  getFavorites(): FavoritePokemon[] {
+    return [...this.favorites];
   }
 
-  toggleFavorite(pokemonId: string): void {
-    const index = this.favorites.indexOf(pokemonId);
+  toggleFavorite(id: number, name: string): void {
+    const index = this.favorites.findIndex(p => p.id === id);
+
     if (index === -1) {
-      this.favorites.push(pokemonId);
+      this.favorites.push({ id, name });
     } else {
       this.favorites.splice(index, 1);
     }
 
-    // Guardar los cambios en el localStorage
     localStorage.setItem(this.FAVORITES_KEY, JSON.stringify(this.favorites));
+    this.favoritesSubject.next(this.favorites);
   }
 
-  isFavorite(pokemonId: string): boolean {
-    return this.favorites.includes(pokemonId);
+  isFavorite(id: number): boolean {
+    return this.favorites.some(p => p.id === id);
   }
 
-  
 }

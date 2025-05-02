@@ -17,7 +17,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - [x] Search for a pokemon
 - [x] Filter pokemon according to its type
 - [x] Change the mode of the image using a SlideToggle
-- [ ] Add pokemon to favorites
+- [x] Add pokemon to favorites
 
 ## Responsive
 

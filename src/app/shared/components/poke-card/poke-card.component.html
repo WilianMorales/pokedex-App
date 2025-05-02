@@ -12,10 +12,10 @@
         <span class="pokemon-info__number" *ngIf="pokemon.status">
           N° {{ leadingZero(pokemon.status.id) }}
         </span>
-        <div class="pokemon-info__favorite">
+        <div class="pokemon-info__favorite" (click)="toggleFavorite(pokemon.status.id, pokemon.name)" *ngIf="pokemon?.status">
           <figure>
-            <img rel="preload" as="image" width="20" height="20" src="assets/icon/heart.svg"
-              [alt]="pokemon.name">
+            <img rel="preload" as="image" width="20" height="20" [src]="isFavorite(pokemon.status.id) ? 'assets/icon/heart-solid.svg' : 'assets/icon/heart.svg'"
+              alt="Favorite">
           </figure>
         </div>
 
