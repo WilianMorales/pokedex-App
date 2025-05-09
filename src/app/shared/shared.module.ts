@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { PokeModalComponent } from './components/poke-modal/poke-modal.component';
 import { ImgBrokenDirective } from './directives/img-broken.directive';
+import { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ImgBrokenDirective } from './directives/img-broken.directive';
     BaseStatsPipe,
     SpinnerComponent,
     PokeModalComponent,
-    ImgBrokenDirective
+    ImgBrokenDirective,
+    ScrollToTopComponent
   ],
   exports: [
     HeaderComponent,
@@ -27,7 +29,8 @@ import { ImgBrokenDirective } from './directives/img-broken.directive';
     BaseStatsPipe,
     SpinnerComponent,
     PokeModalComponent,
-    ImgBrokenDirective
+    ImgBrokenDirective,
+    ScrollToTopComponent
   ],
   imports: [
     CommonModule,
