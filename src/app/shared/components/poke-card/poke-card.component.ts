@@ -46,4 +46,8 @@ export class PokeCardComponent {
   isFavorite(id: number): boolean {
     return id !== undefined ? this.localStorageService.isFavorite(id) : false;
   }
+
+  trackById(index: number, pokemon: IPokemon): number {
+    return pokemon?.order;
+  }
 }

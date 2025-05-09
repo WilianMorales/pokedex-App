@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { forkJoin, Observable, of, Subject } from 'rxjs';
-import { debounceTime, tap } from 'rxjs/operators';
+import { forkJoin, Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 import { IPokemon } from '@interfaces/pokemon-page.interface';
 import { PokemonService } from '@services/pokemon.service';
@@ -89,23 +89,22 @@ export class HomeComponent implements OnInit {
     // Filtra los Pokémon por tipo
     if (this.selectedType === '') {
       this.filteredPokemonList = this.pokemons;
+      return;
     }
 
-    this.pokemonService.getPokemonByType(this.selectedType, this.advance)
+    this.pokemonService.getPokemonByType(this.selectedType)
       .subscribe(data => {
         const pokemonEntries = data.pokemon.map((p: any) => p.pokemon);
         const requests = pokemonEntries.map((p: any) =>
           this.pokemonService.getPokemonDetail(p.name)
         );
 
-        // Aquí optimizamos la carga de los detalles de los Pokémon
         forkJoin(requests).subscribe((results: any[]) => {
-          // Filtrar los resultados solo con la información necesaria
           this.filteredPokemonList = results.map(poke => ({
             name: poke.name,
             url: poke.url,
             order: poke.id,
-            status: poke  // Aquí puedes agregar más detalles si lo necesitas
+            status: poke
           }));
         });
       });
@@ -144,7 +143,7 @@ export class HomeComponent implements OnInit {
       next: (poke) => {
         this.filteredPokemonList = [{
           name: poke.name,
-          url: `https://pokeapi.co/api/v2/pokemon/${poke.id}/`,
+          url: poke.url,
           order: poke.id,
           status: poke
         }];

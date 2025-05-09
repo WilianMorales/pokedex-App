@@ -1,5 +1,5 @@
 <div class="row mt-4">
-  <div class="col-12 col-sm-4 col-md-3 mb-3" *ngFor="let pokemon of pokemons">
+  <div class="col-12 col-sm-4 col-md-3 mb-3" *ngFor="let pokemon of pokemons; trackBy: trackById">
     <div class="pokemon-card">
       <div class="pokemon-card__image" (click)="onClickDetail(pokemon.name)" *ngIf="pokemon.status">
         <img class="pokeball-bg" src="assets/images/pokeball-background.png" alt="Pokeball background">
